@@ -10,7 +10,7 @@ Učesnici:
     
         - alat KLEE (vec je instaliran na virtuelnoj masini)
         - python biblioteka "binarytree"
-            Moze se instalirtai pomocu alata pip komandom 
+            Moze se instalirati pomocu alata pip komandom 
                 pip install binarytree
             Ako nemate instaliran pip, na Linux operativnom sistemu ga mozete instalirati komandom
                 sudo apt install python-pip

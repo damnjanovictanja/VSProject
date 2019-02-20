@@ -12,7 +12,7 @@ Učesnici:
         - python biblioteka "binarytree"
             Moze se instalirtai pomocu alata pip komandom 
                 pip install binarytree
-            Ako nemate instaliran pip na Linux operativnom sistemu ga mozete instalirati komandom
+            Ako nemate instaliran pip, na Linux operativnom sistemu ga mozete instalirati komandom
                 sudo apt install python-pip
     Projekat se pokrece komandom ./treeKlee 
     

@@ -2,6 +2,7 @@
 
 import sys, os, struct
 from binarytree import Node
+import matplotlib.pyplot as plt
 
 # ---------------- IVONA ----------------------
 # funkcija koja cita mapu iz symPaths.ts fajla:
@@ -59,6 +60,32 @@ def getTree(treeList):
                 tmp = tmp.right
     
     return root
+    
+
+# funkcija dobija strukturu stabla i iscrtava ga
+def drawTree(tree, name):
+    
+    x = 0.5
+    y = 0.9
+    dx = 0.4
+    dy = 0.08
+    
+    def drawLines(tree, x, y, dx, dy):
+        dx = dx * 0.8
+        dy = dy * 1.2
+        if(tree.left and tree.right):
+            plt.plot([x-dx,x,x+dx],[y-dy,y,y-dy], '-k')
+            drawLines(tree.left, x-dx, y-dy, dx, dy)
+            drawLines(tree.right, x+dx, y-dy, dx, dy)
+        elif(tree.left):
+            plt.plot([x-dx, x], [y-dy, y], '-k')
+            drawLines(tree.left, x-dx, y-dy, dx, dy)
+        elif(tree.right):
+            plt.plot([x, x+dx], [y, y-dy],'-k')
+            drawLines(tree.left, x+dx, y-dy, dx, dy)
+         
+    drawLines(tree, x, y, dx, dy)    
+    plt.show()
 # ------------ IVONA ----------------------
 
 
@@ -90,4 +117,9 @@ stablo1 = getTree(lista1)
 print(stablo1)
 stablo2 = getTree(lista2)
 print(stablo2)
+
+drawTree(stablo0, 'stablo0.png')
+drawTree(stablo1, 'stablo1.png')
+drawTree(stablo2, 'stablo2.png')
+
 

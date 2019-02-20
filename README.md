@@ -13,6 +13,10 @@ Učesnici:
                 pip install binarytree
             Ako nemate instaliran pip na Linux operativnom sistemu ga mozete instalirati komandom
                 sudo apt install python-pip
-    Projekat se pokrece komandom ./treeklee 
+        - python biblioteka "mathplotlib"
+            Moze se instalirati komandom 
+                sudo apt-get build-dep python-matplotlib
+        
+    Projekat se pokrece komandom ./treeKlee 
     
 

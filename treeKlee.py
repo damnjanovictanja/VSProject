@@ -69,6 +69,7 @@ def getTree(treeList):
 ## ovo ce biti u main funkciji    
 ## Ovdje uneti putanju do symPaths.ts fajla ... 
 
+## **** klee pokrenuti sa komandom -write-sym-paths ****
 
 ## otkomentarisati kasnije
 #treeData = getPaths("klee-last/symPaths.ts") ## dobijamo mapu

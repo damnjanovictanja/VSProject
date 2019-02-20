@@ -5,3 +5,14 @@ Učesnici:
 - Ivona Jurošević 1016/2018
 - Tamara Marčetić 1040/2018
 - Tatjana Damnjanović 1046/2018
+
+    Da biste pokrenuli projekat potrebno je instalirati:
+        - alat KLEE (vec je instaliran na virtuelnoj masini)
+        - python biblioteka "binarytree"
+            Moze se instalirtai pomocu alata pip komandom 
+                pip install binarytree
+            Ako nemate instaliran pip na Linux operativnom sistemu ga mozete instalirati komandom
+                sudo apt install python-pip
+    Projekat se pokrece komandom ./treeklee 
+    
+

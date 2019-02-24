@@ -1,23 +1,24 @@
 # VSProject
-Projekat na master studijama u okviru predmeta Verifikacija softvera
+MSc project, course: Software Verification
 
-Učesnici:
-- Ivona Jurošević 1016/2018
-- Tamara Marčetić 1040/2018
-- Tatjana Damnjanović 1046/2018
+##Authors:
+* Ivona Jurošević 1016/2018
+* Tamara Marčetić 1040/2018
+* Tatjana Damnjanović 1046/2018
 
-    Da biste pokrenuli projekat potrebno je instalirati:
-    
-        - alat KLEE (vec je instaliran na virtuelnoj masini)
-        - python biblioteka "binarytree"
-            Moze se instalirati pomocu alata pip komandom 
-                pip install binarytree
-            Ako nemate instaliran pip, na Linux operativnom sistemu ga mozete instalirati komandom
-                sudo apt install python-pip
-        - python biblioteka "mathplotlib"
-            Moze se instalirati komandom 
+### In order to execute program, you should install:
+    	- python version 2.7 or higher
+        - KLEE
+        - python library "binarytree"
+			* could be installed using pip command:
+				pip install binarytree
+			**Note**: if pip is not installed, on Linux OS it can be installed with command:
+				sudo apt install python-pip
+		- python library "mathplotlib"
+            * could be installed using following command: 
                 sudo apt-get build-dep python-matplotlib
         
-    Projekat se pokrece komandom ./treeKlee 
+    Run program using ./run_scripts.sh $PROGRAM_NAME 
+	**Note**: $PROGRAM_NAME should not contain extensions.
     
 

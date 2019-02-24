@@ -23,7 +23,7 @@ def getPaths(path):
             paths[id] += data[pos:pos+size]
             pos += size
     if pos!=len(data):
-        raise IOError,'bad position'
+        raise IOError
     
     return paths
 

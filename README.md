@@ -17,8 +17,8 @@ MSc project, course: Software Verification
 		- python library "mathplotlib"
             * could be installed using following command: 
                 sudo apt-get build-dep python-matplotlib
+                na VM: pip install --user matplotlib
         
     Run program using ./run_scripts.sh $PROGRAM_NAME 
 	**Note**: $PROGRAM_NAME should not contain extensions.
     
-

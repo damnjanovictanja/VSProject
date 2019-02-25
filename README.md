@@ -12,12 +12,13 @@ MSc project, course: Software Verification
         - python library "binarytree"
 			* could be installed using pip command:
 				pip install binarytree
+				for VM: pip install --user binarytree
 			**Note**: if pip is not installed, on Linux OS it can be installed with command:
 				sudo apt install python-pip
 		- python library "mathplotlib"
             * could be installed using following command: 
                 sudo apt-get build-dep python-matplotlib
-                na VM: pip install --user matplotlib
+                for VM: pip install --user matplotlib
         
     Run program using ./run_scripts.sh $PROGRAM_NAME 
 	**Note**: $PROGRAM_NAME should not contain extensions.

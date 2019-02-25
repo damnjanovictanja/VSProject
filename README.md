@@ -12,11 +12,13 @@ Učesnici:
         - python biblioteka "binarytree"
             Moze se instalirati pomocu alata pip komandom 
                 pip install binarytree
+                na VM: pip install --user binarytree
             Ako nemate instaliran pip, na Linux operativnom sistemu ga mozete instalirati komandom
                 sudo apt install python-pip
         - python biblioteka "mathplotlib"
             Moze se instalirati komandom 
                 sudo apt-get build-dep python-matplotlib
+                na VM: pip install --user matplotlib
         
     Projekat se pokrece komandom ./treeKlee 
     

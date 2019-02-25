@@ -4,8 +4,8 @@ import sys, os, struct
 from binarytree import Node
 import matplotlib.pyplot as plt
 
-# ---------------- IVONA ----------------------
 # funkcija koja cita mapu iz symPaths.ts fajla:
+
 def getPaths(path):
     data = open(path,'rb').read() # Otvaramo binarni fajl za citanje
     paths = { 0 : ''} # Mapa u kojoj cemo cuvati putanje
@@ -63,7 +63,8 @@ def getTree(treeList):
     
 
 # funkcija dobija strukturu stabla i iscrtava ga
-def drawTree(tree, name):
+
+def drawTree(tree):
     
     x = 0.5
     y = 0.9
@@ -86,40 +87,5 @@ def drawTree(tree, name):
          
     drawLines(tree, x, y, dx, dy)    
     plt.show()
-# ------------ IVONA ----------------------
-
-
-
-
-
-## ---------------------------------------------------------------------------------------------------
-## ovo ce biti u main funkciji    
-## Ovdje uneti putanju do symPaths.ts fajla ... 
-
-## **** klee pokrenuti sa komandom -write-sym-paths ****
-
-## otkomentarisati kasnije
-#treeData = getPaths("klee-last/symPaths.ts") ## dobijamo mapu
-#treeDataItems = treeData.items() # konvertujemo mapu u listu, radi lakseg obilaska i crtanja
-#treeDataItems.sort() # sortiramo listu
-#treeBranches = getTree(treeDataItems)
-#print(treeBranches)
-
-
-## -----------------------------------TESTIRANJE ZA CITANJE STABLA IZ LISTE---------------------------
-lista0 = [(0, ''), (1, '1'), (2, '0')]
-lista1 = [(0, ''), (1, '11'), (2, '01'), (3, '10'), (4, '00')]
-lista2 = [(0, ''), (1, '11'), (2, '0'), (3, '10')]
-
-stablo0 = getTree(lista0)
-print(stablo0)
-stablo1 = getTree(lista1)
-print(stablo1)
-stablo2 = getTree(lista2)
-print(stablo2)
-
-drawTree(stablo0, 'stablo0.png')
-drawTree(stablo1, 'stablo1.png')
-drawTree(stablo2, 'stablo2.png')
 
 

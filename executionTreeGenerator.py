@@ -1,10 +1,10 @@
 import os
 import sys
-import utils
-import treeKlee
+import treeKlee as tk
 
-treeData = getPaths("klee-last/symPaths.ts")
+treeData = tk.getPaths("klee-last/symPaths.ts")
 treeDataItems = treeData.items()
 treeDataItems.sort()
-treeBranches = getTree(treeDataItems)
-drawTree(treeBranches, "tree.png")
+treeBranches = tk.getTree(treeDataItems)
+print(treeBranches)
+tk.drawTree(treeBranches)

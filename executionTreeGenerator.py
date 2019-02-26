@@ -6,5 +6,5 @@ treeData = tk.getPaths("klee-last/symPaths.ts")
 treeDataItems = treeData.items()
 treeDataItems.sort()
 treeBranches = tk.getTree(treeDataItems)
-print(treeBranches)
 tk.drawTree(treeBranches)
+

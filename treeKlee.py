@@ -51,11 +51,11 @@ def getTree(treeList):
         branch = (treeList[i])[1]
         tmp = root
         for j in range(0, len(branch)):
-            if(branch[j] == '0'):
+            if(branch[j] == '1'):
                 if(not tmp.left):
                     tmp.left = Node(i)
                 tmp = tmp.left
-            elif(branch[j] == '1'):
+            elif(branch[j] == '0'):
                 if(not tmp.right):
                     tmp.right = Node(i)
                 tmp = tmp.right
@@ -92,7 +92,7 @@ def drawTree(tree, leaves):
  
     x = 0.5
     y = 1
-    dx = 0.1*(2**leaves)
+    dx = 0.05*(2**(leaves-1))
     dy = 0.1
             
     drawLines(tree, x, y, dx, dy)    

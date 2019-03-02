@@ -4,14 +4,20 @@
 
 /* funkcija vraca 1 ukoliko je x paran, inace 0 */
 int even(int x) {
-  if (x%2==0){
-    if(x>5) return 10;
-    else return 4;
-}
-  if(x%2){/*
-    if(x>7) return 11;
-    else*/ return 3;
-}
+  if (x%3==0){
+    if(x>5)
+			x++;
+    else {
+			if ()
+		}
+			return 4;
+	}
+  if(x%2){
+    if(x>7)
+			return 11;
+    else
+			x++;
+	}
 
   klee_assert(0); 
   return 1; // nedostizna naredba

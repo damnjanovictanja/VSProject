@@ -19,9 +19,9 @@ MSc project, course: Software Verification
 			* **Note**: if pip is not installed, on Linux OS it can be installed with command:
 				* sudo apt install python-pip
 * python library "mathplotlib"
-	* could be installed using following command: 
-        	* sudo apt-get build-dep python-matplotlib
-                * for VM: pip install --user matplotlib
+	* could be installed using following command:
+		* sudo apt-get build-dep python-matplotlib
+		* for VM: pip install --user matplotlib
 * python library python-tk
 	* sudo apt-get install python-tk
 	

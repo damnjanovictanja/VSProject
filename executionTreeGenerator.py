@@ -29,10 +29,22 @@ treeData = tk.getPaths("klee-last/symPaths.ts")
 treeDataItems = treeData.items()
 treeBranches = tk.getTree(treeDataItems)
 preorder = treeBranches.PreorderTraversal(treeBranches) # KLD obilazak cvorova (uslovi, ali i listovi)
+print("uslovi+listovi:\n",preorder)
 preorder = tk.formConditionNodes(treeBranches, preorder) # -> KLD obilazak cvorova u kojima su uslovi
+print("uslovi:\n",preorder)
 mapPreorder = {} # mapiramo jer zelimo da budu uparene sa odgovarajucim linijama iz fajla "run.istats"
 lines = lineNumbersOfSourceCode()
-for i in range (0, len(preorder)):
+print("linije:\n",lines)
+#for i in range (0, len(preorder)):
 # moramo nekako obraditi kada postoji vise nezavisnih uslova... - tu su sve linije odgovarajuci broj puta, ali ne u odgovarajucem redosledu
-  mapPreorder[preorder[i]] = lines[i]
-tk.drawTree(treeBranches, len(treeDataItems), mapPreorder)
+#  mapPreorder[preorder[i]] = lines[i]
+
+
+
+####################################################################
+## Ovdje popunjavamo stablo informacijama o rednom broju linije gdje se nalazi uslov, mislim da je sada dobar redosled...
+mapPreorder = tk.joinTreeAndLineNumbers(treeBranches, lines)
+####################################################################
+
+
+tk.drawTree(treeBranches, len(treeDataItems), mapPreorder)  

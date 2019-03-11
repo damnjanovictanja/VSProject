@@ -2,7 +2,6 @@
 
 from __future__ import division
 import sys, os, struct
-from binarytree import Node
 import matplotlib.pyplot as plt
 
 # funkcija koja cita mapu iz symPaths.ts fajla:
@@ -44,7 +43,6 @@ def getPaths(path):
 def getTree(treeList):
     root = Node(0)
     k = 1
-    # ovde namestiti da oni sa istim uslovom da imaju isto k...?
     for i in range(1, len(treeList)):
         branch = (treeList[i])[1]
         tmp = root
@@ -52,12 +50,14 @@ def getTree(treeList):
             if(branch[j] == '1'):
                 if(not tmp.left):
                     tmp.left = Node(k) #i
-		    k = k+1
+                    tmp.leave = False
+                    k = k+1
                 tmp = tmp.left
             elif(branch[j] == '0'):
                 if(not tmp.right):
                     tmp.right = Node(k) #i
-		    k = k+1
+                    tmp.leave = False
+                    k = k+1
                 tmp = tmp.right
     return root
 
@@ -83,7 +83,7 @@ def drawTree(tree, leaves, mapPreorder):
             plt.plot([x, x+dx], [y, y-dy],'-k')
             drawLines(tree.right, x+dx, y-dy, dx, dy)
         if(ind):
-            text(x, y, mapPreorder[tree.data], 20) #"uslov"
+            text(x, y, tree.data, 20) #"uslov"
         else:
             text(x, y, "list", 15)
 
@@ -100,6 +100,7 @@ class Node:
         self.left = None
         self.right = None
         self.data = data
+        self.leave = True
 
     def PreorderTraversal(self, root):
         res = []
@@ -111,13 +112,36 @@ class Node:
 
 # preorder sadrzi i uslove i listove, sada formiramo listu koja sadrzi KLD obilazak samo uslova:
 def formConditionNodes(tree, preorder):
-  ind = False
-  if(tree.left):
-    ind = True
-    formConditionNodes(tree.left, preorder)
-  if(tree.right):
-    ind = True
-    formConditionNodes(tree.right, preorder)
-  if(ind == False):
-    preorder.remove(tree.data)
-  return preorder
+    ind = False
+    if(tree.left):
+        ind = True
+        formConditionNodes(tree.left, preorder)
+    if(tree.right):
+        ind = True
+        formConditionNodes(tree.right, preorder)
+    if(ind == False):
+        preorder.remove(tree.data)
+    return preorder
+  
+  
+######################################################################################################
+# Funkcija koja spaja redni broj linije uslova sa stablom
+def joinTreeAndLineNumbers(root, lines):
+    def joinTALN(root, lines, n):
+        if(not root.leave):
+            x = 0
+            for l in lines:
+                if(l>n):
+                    x = l
+                    break
+            if(not x==0):
+                root.data = x
+                lines.remove(x)
+                if(root.left):
+                    joinTALN(root.left, lines, x)
+                if(root.right):
+                    joinTALN(root.right, lines, x)
+            else:
+                print("Some error....")
+    
+    joinTALN(root, lines, 0)

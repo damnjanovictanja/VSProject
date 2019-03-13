@@ -27,8 +27,8 @@ MSc project, course: Software Verification
 	
 ### Test examples are placed in folder test
 
-### Run program using ./run_scripts.sh $PROGRAM_NAME 
+### Run program using ./get_execution_tree.sh $PROGRAM_NAME 
 
 * *Note*: Every program should be placed in folder test!
 * *Note*: $PROGRAM_NAME should not contain extensions.
-* *Example*: ./run_scripts.sh even_sym    
+* *Example*: ./get_execution_tree.sh even_sym    

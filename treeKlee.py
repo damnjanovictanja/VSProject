@@ -98,21 +98,19 @@ def fillTheLeaves(tree, cond):
     ind = False
     if(tree.left):
         ind = True
-	if(cond != ""):
-  	  cond = cond + " && " + tree.data
-	else:
-	  cond = tree.data
-        fillTheLeaves(tree.left, cond)
+        if(cond != ""):
+	        fillTheLeaves(tree.left, cond + " && " + tree.data)
+        else:
+	        fillTheLeaves(tree.left, tree.data)
     if(tree.right):
         ind = True
-	if(cond != ""):
-  	  cond = cond + " && !" + tree.data
-	else:
-	  cond = tree.data
-        fillTheLeaves(tree.right, cond)
+        if(cond != ""):
+	        fillTheLeaves(tree.right, cond + " && !(" + tree.data + ")")
+        else:
+	        fillTheLeaves(tree.right, "!(" + tree.data + ")")
     if(ind == False):
         tree.data = cond
-	cond = ""
+
 
 # some useful data related to tree, and preorder tree traversal:
 class Node:

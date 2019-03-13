@@ -49,13 +49,13 @@ def getTree(treeList):
         for j in range(0, len(branch)):
             if(branch[j] == '1'):
                 if(not tmp.left):
-                    tmp.left = Node(k) #i
+                    tmp.left = Node(k)
                     tmp.leave = False
                     k = k+1
                 tmp = tmp.left
             elif(branch[j] == '0'):
                 if(not tmp.right):
-                    tmp.right = Node(k) #i
+                    tmp.right = Node(k)
                     tmp.leave = False
                     k = k+1
                 tmp = tmp.right
@@ -83,7 +83,7 @@ def drawTree(tree, leaves, mapPreorder):
             plt.plot([x, x+dx], [y, y-dy],'-k')
             drawLines(tree.right, x+dx, y-dy, dx, dy)
         if(ind):
-            text(x, y, tree.data, 20) #"uslov"
+            text(x, y, tree.data, 20) # condition
         else:
             text(x, y, "list", 15)
 
@@ -94,7 +94,7 @@ def drawTree(tree, leaves, mapPreorder):
     drawLines(tree, x, y, dx, dy)    
     plt.show()
 
-# funkcija za KLD obilazak stabla:
+# some useful data related to tree, and preorder tree traversal:
 class Node:
     def __init__(self, data):
         self.left = None
@@ -110,7 +110,8 @@ class Node:
             res = res + self.PreorderTraversal(root.right)
         return res
 
-# preorder sadrzi i uslove i listove, sada formiramo listu koja sadrzi KLD obilazak samo uslova:
+# the function PreorderTraversal give us conditions and leafs, but we need just conditions
+# kasnije ce nam trebati i listovi...
 def formConditionNodes(tree, preorder):
     ind = False
     if(tree.left):
@@ -126,7 +127,7 @@ def formConditionNodes(tree, preorder):
   
 ######################################################################################################
 # Funkcija koja spaja redni broj linije uslova sa stablom
-def joinTreeAndLineNumbers(root, lines):
+def joinTreeAndLineNumbers(root, lines, mapLines):
     def joinTALN(root, lines, n):
         if(not root.leave):
             x = 0
@@ -135,7 +136,7 @@ def joinTreeAndLineNumbers(root, lines):
                     x = l
                     break
             if(not x==0):
-                root.data = x
+                root.data = mapLines[x] # writing condition into a node
                 lines.remove(x)
                 if(root.left):
                     joinTALN(root.left, lines, x)

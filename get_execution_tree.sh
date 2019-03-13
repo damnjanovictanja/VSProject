@@ -6,4 +6,4 @@ cd ..
 rm -rf klee-last
 mkdir klee-last
 cp ./test/klee-last/* ./klee-last/
-python executionTreeGenerator.py
+python executionTreeGenerator.py $1.c # we need name of a source code - because we are writing conditions from it

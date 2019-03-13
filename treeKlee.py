@@ -85,7 +85,7 @@ def drawTree(tree, leaves, mapPreorder):
         if(ind):
             text(x, y, tree.data, 20) # condition
         else:
-            text(x, y, "list", 15)
+            text(x, y, tree.data, 15) # "list"
 
     x = 0.5
     y = 1
@@ -93,6 +93,26 @@ def drawTree(tree, leaves, mapPreorder):
     dy = 0.1
     drawLines(tree, x, y, dx, dy)    
     plt.show()
+
+def fillTheLeaves(tree, cond):
+    ind = False
+    if(tree.left):
+        ind = True
+	if(cond != ""):
+  	  cond = cond + " && " + tree.data
+	else:
+	  cond = tree.data
+        fillTheLeaves(tree.left, cond)
+    if(tree.right):
+        ind = True
+	if(cond != ""):
+  	  cond = cond + " && !" + tree.data
+	else:
+	  cond = tree.data
+        fillTheLeaves(tree.right, cond)
+    if(ind == False):
+        tree.data = cond
+	cond = ""
 
 # some useful data related to tree, and preorder tree traversal:
 class Node:
@@ -110,7 +130,7 @@ class Node:
             res = res + self.PreorderTraversal(root.right)
         return res
 
-# the function PreorderTraversal give us conditions and leafs, but we need just conditions
+# the function PreorderTraversal give us conditions and leaves, but we need just conditions
 # kasnije ce nam trebati i listovi...
 def formConditionNodes(tree, preorder):
     ind = False
@@ -123,8 +143,7 @@ def formConditionNodes(tree, preorder):
     if(ind == False):
         preorder.remove(tree.data)
     return preorder
-  
-  
+
 ######################################################################################################
 # Funkcija koja spaja redni broj linije uslova sa stablom
 def joinTreeAndLineNumbers(root, lines, mapLines):

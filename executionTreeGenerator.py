@@ -53,7 +53,6 @@ preorder = treeBranches.PreorderTraversal(treeBranches) # KLD obilazak cvorova (
 print("uslovi+listovi:\n",preorder)
 preorder = tk.formConditionNodes(treeBranches, preorder) # -> KLD obilazak cvorova u kojima su uslovi
 print("uslovi:\n",preorder)
-mapPreorder = {} # mapiramo jer zelimo da budu uparene sa odgovarajucim linijama iz fajla "run.istats"
 mapLines = {}
 lines = lineNumbersOfSourceCode(mapLines)
 print("linije:\n",lines)
@@ -69,5 +68,6 @@ print("mapa:\n", mapLines)
 mapPreorder = tk.joinTreeAndLineNumbers(treeBranches, lines, mapLines) # mapa je ono sto nam treba, ali ne podrzava duplikate, pa nam treba i lista i mapa istovremeno (lista ima dovoljan broj pojavljivanja svake linije, a onda iz mape samo citamo te uslove...)
 ####################################################################
 
-
-tk.drawTree(treeBranches, len(treeDataItems), mapPreorder)  
+cond = ""
+tk.fillTheLeaves(treeBranches, cond)
+tk.drawTree(treeBranches, len(treeDataItems), mapPreorder)

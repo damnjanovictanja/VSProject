@@ -8,7 +8,7 @@ import re
 def lineNumbersOfSourceCode(mapLines):
   lines = []
   f = open("./klee-last/run.istats", "r")
-  ind = 0
+  #ind = 0
   while(True):
     currLine = f.readline()
     if(currLine[0:2] == "fn"): # currLine = "fn=..." - starting point of file run.istats
@@ -17,12 +17,9 @@ def lineNumbersOfSourceCode(mapLines):
     currLine = f.readline().split(' ')
     if(currLine[0][0:2] == "fn"): # when currLine = "fn=main", we need to stop
       break
-    # Q = currLine[len(currLine)-5]
-    if(len(currLine) > 4 and ind == 0 and currLine[len(currLine)-5] != '0'): # first condition - just once (it's the only one which can have Q != 1 but need to appear just once)
-      lines.append(int(currLine[1]))
-      ind = 1
-    elif(len(currLine) > 4 and ind == 1 and currLine[len(currLine)-5] != '0'): # all other conditions which have Q != 0 need to appear Q times (those are independent conditions, and we need to append them on the adequate nodes of the current tree)
-      for j in range (0, int(currLine[len(currLine)-5])):
+    # fork = currLine[2] - toliko puta treba da se ponovi uslov u stablu...
+    if(len(currLine) > 4 and currLine[2] != '0'):
+      for j in range (0, int(currLine[3])):
         lines.append(int(currLine[1]))
   # lines: n1, n2, ..., nk -> mapLines: {ni1:condition1, ni2:condition2, ..., nij:conditionk}
   # e.g. - lines: 1, 2, 2, 3, 3, 3, 3 -> mapLines: {1:c1, 2:c2, 3:c3}

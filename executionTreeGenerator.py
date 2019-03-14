@@ -8,17 +8,14 @@ import re
 def lineNumbersOfSourceCode(mapLines):
   lines = []
   f = open("./klee-last/run.istats", "r")
-  #ind = 0
   while(True):
     currLine = f.readline()
-    if(currLine[0:2] == "fn"): # currLine = "fn=..." - starting point of file run.istats
+    if(currLine == ""):
       break
-  while(True):
-    currLine = f.readline().split(' ')
-    if(currLine[0][0:2] == "fn"): # when currLine = "fn=main", we need to stop
-      break
+    currLine = currLine.split(' ')
+    print(currLine)
     # fork = currLine[2] - toliko puta treba da se ponovi uslov u stablu...
-    if(len(currLine) > 4 and currLine[2] != '0'):
+    if(len(currLine) == 16 and currLine[2] != '0'):
       for j in range (0, int(currLine[3])):
         lines.append(int(currLine[1]))
   # lines: n1, n2, ..., nk -> mapLines: {ni1:condition1, ni2:condition2, ..., nij:conditionk}

@@ -1,0 +1,18 @@
+(1) opis problema:
+
+Koriscenjem informacija o simbolickom izvrsavanju u
+okviru alata KLEE napraviti vizuelni prikaz simbolickog izvrsavanja,
+odnosno automatski generisati prikaz stabla pretrage (sa detaljima o
+stanju i putanjama u okviru cvorova) kao i omoguciti prikaz dela
+stabla pretrage, odnosno prekidanje generisanja prikaza na osnovu nekog
+zadatog parametra velicine stabla pretrage. Stablo pretrage moze da bude
+ogromno, podrazumeva se da resenje treba da radi za kratke programe koji
+nemaju kompleksnu strukturu. 
+
+(2) opis arhitekture sistema (opis osnovnih modula implementacije):
+
+
+
+(3) opis rešenja problema (osnovne ideje, obrazloženja za ključne odluke, opis osnovnog algoritma):
+
+

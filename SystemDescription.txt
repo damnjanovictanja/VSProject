@@ -1,0 +1,30 @@
+(1) opis problema:
+
+Koriscenjem informacija o simbolickom izvrsavanju u
+okviru alata KLEE napraviti vizuelni prikaz simbolickog izvrsavanja,
+odnosno automatski generisati prikaz stabla pretrage (sa detaljima o
+stanju i putanjama u okviru cvorova) kao i omoguciti prikaz dela
+stabla pretrage, odnosno prekidanje generisanja prikaza na osnovu nekog
+zadatog parametra velicine stabla pretrage. Stablo pretrage moze da bude
+ogromno, podrazumeva se da resenje treba da radi za kratke programe koji
+nemaju kompleksnu strukturu. 
+
+(2) opis arhitekture sistema (opis osnovnih modula implementacije):
+
+
+
+(3) opis rešenja problema (osnovne ideje, obrazloženja za ključne odluke, opis osnovnog algoritma):
+
+Koristili smo bash skriptu da bi generisali potrebne fajlove. U bash skripti pokrecemo clang, klee, a tek onda glavni python program.
+Koristenjem alata clang dobijamo llvm kod.
+Od tog llvm koda pokretanjem alata klee sa opcijom --write-sym-paths dobijamo folder klee-last koji sadrzi fajlove u kojima se nalaze potrebne informacije.
+Za pocetak nam je bitan binarni fajl symPaths.ts. 
+U python programu executionGenerator.py citamo dobijamo kao argument putanju do symPaths.ts fajla.
+Citamo taj fajl pozivom funkcije getPaths iz modula treeKlee.py. Ta funkcija nam vraca listu.
+Od dobijene liste kreiramo stablo funkcijom getTree. 
+Sledeci bitan fajl generisan od strane klee alata je run.istats.
+Zahvaljujuci tom fajlu dobijamo informacije o polozaju uslova u stablu, kao i o rednom broju linije izvornog koda gdje se nalazi uslov. 
+Prvo uparujemo redni broj linije sa uslovom pozivom funkcije lineNumbersOfSourceCode, a nakon toga popunjavamo stablo dobijenim uslovima koristeci funkciju joinTreeAndLineNumbers;
+
+
+

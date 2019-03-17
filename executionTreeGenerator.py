@@ -29,8 +29,10 @@ def lineNumbersOfSourceCode(mapLines):
     i += 1
   for k, v in mapLines.items():
     # if(x%5 == 0) -> (x%5 == 0)
-    cond = v.find("if")+len("if") # len("if") - da ne hardkodiramo 2, nego da se zna na sta mislimo...
+    cond = v.find("if")+len("if")
     mapLines[k] = (mapLines[k])[cond:] # cond - index of '(' - which is after "if"
+    mapLines[k] = (mapLines[k]).replace(" (", "(") # if (...) -> if(...)
+    mapLines[k] = (mapLines[k]).replace(") {", "){") # if(...) { -> if(...){
     # (x%5 == 0){ OR (x%5 == 0) -> x%5 == 0
     if((mapLines[k])[-1] == '{'):
       mapLines[k] = (mapLines[k])[1:-2] # remove "){"

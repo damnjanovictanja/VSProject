@@ -10,8 +10,25 @@ ogromno, podrazumeva se da resenje treba da radi za kratke programe koji
 nemaju kompleksnu strukturu. 
 
 (2) opis arhitekture sistema (opis osnovnih modula implementacije):
-
-
+get_execution_tree.sh:
+  Pokrecece alate clang i klee i nakon toga poziva skript executionGenerator.py.
+executionTreeGenerator.py:
+  def lineNumbersOfSourceCode(mapLines): 
+    Kreira listu linija izvornog .c koda u kojima se nalaze uslovi koji se smjestaju u stablo.
+  Obradjuje argumente komandne linije pozivom funkcija iz treeKlee.py
+treeKlee.py:
+  def getPaths(path):
+    Cita mapu iz symPaths.ts koja je znacajna za strukturu stabla.
+  def getTree(treeList):
+    Kreira stablo na osnovu mape.
+  def drawTree(tree, leaves, mapPreorder):
+    Crta stablo.
+  def fillTheLeaves(tree, cond):
+    Popunjava listove stabla.
+  def formConditionNodes(tree, preorder):
+  def joinTreeAndLineNumbers(root, lines, mapLines):
+     Popunjava uslove stabla.
+  
 
 (3) opis rešenja problema (osnovne ideje, obrazloženja za ključne odluke, opis osnovnog algoritma):
 

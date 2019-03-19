@@ -62,12 +62,16 @@ def getTree(treeList):
     return root
 
 # funkcija dobija strukturu stabla i iscrtava ga
-def drawTree(tree, leaves, mapPreorder):
+def drawTree(tree, leaves, mapPreorder, limitation=None):
     
     def text(x, y, t, size=12, **kwargs):
         plt.text(x, y, t, ha='center', va='center', size=size, bbox=dict(boxstyle='round', ec='k', fc='w'), **kwargs)
 
-    def drawLines(tree, x, y, dx, dy):
+    def drawLines(tree, x, y, dx, dy, limitation=None):
+	if (limitation is not None and limitation == 0):
+		text(x, y, "...", alpha=0.4)
+		return
+	
         preorder = tree.PreorderTraversal(tree)
         ind = False
         dx = dx * 0.5
@@ -76,22 +80,25 @@ def drawTree(tree, leaves, mapPreorder):
             ind = True
             text(x-dx/2, y-dy/2, "True", alpha=0.4)
             plt.plot([x-dx, x], [y-dy, y], '-k')
-            drawLines(tree.left, x-dx, y-dy, dx, dy)
+            drawLines(tree.left, x-dx, y-dy, dx, dy, (limitation-1) if not None else None)
         if(tree.right):
             ind = True
             text(x+dx/2, y-dy/2, "False", alpha=0.4)
             plt.plot([x, x+dx], [y, y-dy],'-k')
-            drawLines(tree.right, x+dx, y-dy, dx, dy)
+            drawLines(tree.right, x+dx, y-dy, dx, dy, (limitation-1) if not None else None)
         if(ind):
             text(x, y, tree.data, 20) # condition
         else:
             text(x, y, tree.data, 15) # "list"
-
+	
     x = 0.5
     y = 1
     dx = 0.05*(2**(leaves-1))
     dy = 0.1
-    drawLines(tree, x, y, dx, dy)    
+    if limitation is None:
+    	drawLines(tree, x, y, dx, dy)
+    else:
+	drawLines(tree, x, y, dx, dy, limitation)	
     plt.show()
 
 def fillTheLeaves(tree, cond):

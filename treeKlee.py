@@ -62,13 +62,13 @@ def getTree(treeList):
     return root
 
 # funkcija dobija strukturu stabla i iscrtava ga
-def drawTree(tree, leaves, mapPreorder):
+def drawTree(tree, leaves):
     
     def text(x, y, t, size=12, **kwargs):
         plt.text(x, y, t, ha='center', va='center', size=size, bbox=dict(boxstyle='round', ec='k', fc='w'), **kwargs)
 
     def drawLines(tree, x, y, dx, dy):
-        preorder = tree.PreorderTraversal(tree)
+        #preorder = tree.PreorderTraversal(tree)
         ind = False
         dx = dx * 0.5
         dy = dy * 1.2
@@ -94,22 +94,22 @@ def drawTree(tree, leaves, mapPreorder):
     drawLines(tree, x, y, dx, dy)    
     plt.show()
 
-def fillTheLeaves(tree, cond):
-    ind = False
-    if(tree.left):
-        ind = True
-        if(cond != ""):
-	        fillTheLeaves(tree.left, cond + " && " + tree.data)
-        else:
-	        fillTheLeaves(tree.left, tree.data)
-    if(tree.right):
-        ind = True
-        if(cond != ""):
-	        fillTheLeaves(tree.right, cond + " && !(" + tree.data + ")")
-        else:
-	        fillTheLeaves(tree.right, "!(" + tree.data + ")")
-    if(ind == False):
-        tree.data = cond
+#def fillTheLeaves(tree, cond):
+#    ind = False
+#    if(tree.left):
+#        ind = True
+#        if(cond != ""):
+#	        fillTheLeaves(tree.left, cond + " && " + tree.data)
+#        else:
+#	        fillTheLeaves(tree.left, tree.data)
+#    if(tree.right):
+#        ind = True
+#        if(cond != ""):
+#	        fillTheLeaves(tree.right, cond + " && !(" + tree.data + ")")
+#        else:
+#	        fillTheLeaves(tree.right, "!(" + tree.data + ")")
+#    if(ind == False):
+#        tree.data = cond
 
 
 # some useful data related to tree, and preorder tree traversal:
@@ -120,32 +120,32 @@ class Node:
         self.data = data
         self.leave = True
 
-    def PreorderTraversal(self, root):
-        res = []
-        if root:
-            res.append(root.data)
-            res = res + self.PreorderTraversal(root.left)
-            res = res + self.PreorderTraversal(root.right)
-        return res
+#    def PreorderTraversal(self, root):
+#        res = []
+#        if root:
+#            res.append(root.data)
+#            res = res + self.PreorderTraversal(root.left)
+#            res = res + self.PreorderTraversal(root.right)
+#        return res
 
 # the function PreorderTraversal give us conditions and leaves, but we need just conditions
 # kasnije ce nam trebati i listovi...
-def formConditionNodes(tree, preorder):
-    ind = False
-    if(tree.left):
-        ind = True
-        formConditionNodes(tree.left, preorder)
-    if(tree.right):
-        ind = True
-        formConditionNodes(tree.right, preorder)
-    if(ind == False):
-        preorder.remove(tree.data)
-    return preorder
+#def formConditionNodes(tree, preorder):
+#    ind = False
+#    if(tree.left):
+#        ind = True
+#        formConditionNodes(tree.left, preorder)
+#    if(tree.right):
+#        ind = True
+#        formConditionNodes(tree.right, preorder)
+#    if(ind == False):
+#        preorder.remove(tree.data)
+#    return preorder
 
 ######################################################################################################
-# Funkcija koja spaja redni broj linije uslova sa stablom
+# Funkcija koja popunjava cvorove stabla
 def joinTreeAndLineNumbers(root, lines, mapLines):
-    def joinTALN(root, lines, n):
+    def joinTALN(root, lines, n, cond):
         if(not root.leave):
             x = 0
             for l in lines:
@@ -156,10 +156,18 @@ def joinTreeAndLineNumbers(root, lines, mapLines):
                 root.data = mapLines[x] # writing condition into a node
                 lines.remove(x)
                 if(root.left):
-                    joinTALN(root.left, lines, x)
+                    if(cond != ""):
+                        joinTALN(root.left, lines, x, cond + " && " + root.data)
+                    else:
+                        joinTALN(root.left, lines, x, root.data)
                 if(root.right):
-                    joinTALN(root.right, lines, x)
+                    if(cond != ""):
+                        joinTALN(root.right, lines, x, cond + " && !(" + root.data + ")")
+                    else:
+                        joinTALN(root.right, lines, x, "!(" + root.data + ")")
             else:
                 print("Some error....")
+        if(root.leave):
+            root.data = cond       
     
-    joinTALN(root, lines, 0)
+    joinTALN(root, lines, 0, "")

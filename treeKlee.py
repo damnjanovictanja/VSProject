@@ -62,13 +62,16 @@ def getTree(treeList):
     return root
 
 # funkcija dobija strukturu stabla i iscrtava ga
-def drawTree(tree, leaves):
-    
+def drawTree(tree, leaves, limitation=None):
+
     def text(x, y, t, size=12, **kwargs):
         plt.text(x, y, t, ha='center', va='center', size=size, bbox=dict(boxstyle='round', ec='k', fc='w'), **kwargs)
 
-    def drawLines(tree, x, y, dx, dy):
-        #preorder = tree.PreorderTraversal(tree)
+    def drawLines(tree, x, y, dx, dy, limitation=None):
+        if (limitation is not None and limitation == 0):
+            text(x, y, "...", alpha=0.4)
+            return
+
         ind = False
         dx = dx * 0.5
         dy = dy * 1.2
@@ -86,12 +89,15 @@ def drawTree(tree, leaves):
             text(x, y, tree.data, 20) # condition
         else:
             text(x, y, tree.data, 15) # "list"
-
+	
     x = 0.5
     y = 1
     dx = 0.05*(2**(leaves-1))
     dy = 0.1
-    drawLines(tree, x, y, dx, dy)    
+    if limitation is None:
+        drawLines(tree, x, y, dx, dy)
+    else:
+        drawLines(tree, x, y, dx, dy, limitation)	
     plt.show()
 
 #def fillTheLeaves(tree, cond):

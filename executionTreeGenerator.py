@@ -67,3 +67,8 @@ mapPreorder = tk.joinTreeAndLineNumbers(treeBranches, lines, mapLines) # mapa je
 #cond = ""
 #tk.fillTheLeaves(treeBranches, cond)
 tk.drawTree(treeBranches, len(treeDataItems))
+#if (len(sys.argv) != 2):
+#  tk.drawTree(treeBranches, len(treeDataItems))
+#else:
+#  tk.drawTree(treeBranches, len(treeDataItems), sys.argv[1])
+

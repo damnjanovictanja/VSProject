@@ -135,7 +135,7 @@ def draw_tree(execution_tree, leaves, limit=None):
         if ind:
             text(x_coordinate, y_coordinate, tree.data, 20)  # condition
         else:
-            text(x_coordinate, y_coordinate, tree.data, 15)  # "list"
+            text(x_coordinate, y_coordinate, tree.data, 15)  # "leave"
 
     x_coord = 0.5
     y_coord = 1
@@ -242,13 +242,13 @@ def join_tree_and_line_numbers(root, lines, map_lines):
                 if root.left:
                     if cond != "":
                         joinTALN(root.left, lines, x,
-                                 cond + " && " + root.data)
+                                 cond + "\n&&\n" + root.data)
                     else:
                         joinTALN(root.left, lines, x, root.data)
                 if root.right:
                     if cond != "":
                         joinTALN(root.right, lines, x, cond +
-                                 " && !(" + root.data + ")")
+                                 "\n&&\n!(" + root.data + ")")
                     else:
                         joinTALN(root.right, lines, x, "!(" + root.data + ")")
             else:

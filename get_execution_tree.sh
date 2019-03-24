@@ -6,4 +6,9 @@ cd ..
 rm -rf klee-last
 mkdir klee-last
 cp ./test/klee-last/* ./klee-last/
+if [ "$#" -eq 1 ]; then
 python executionTreeGenerator.py $1.c # we need name of a source code - because we are writing conditions from it
+fi
+if [ "$#" -eq 2 ]; then
+python executionTreeGenerator.py $1.c $2
+fi

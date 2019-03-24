@@ -71,7 +71,6 @@ def drawTree(tree, leaves, limitation=None):
         if (limitation is not None and limitation == 0):
             text(x, y, "...", alpha=0.4)
             return
-
         ind = False
         dx = dx * 0.5
         dy = dy * 1.2
@@ -79,12 +78,18 @@ def drawTree(tree, leaves, limitation=None):
             ind = True
             text(x-dx/2, y-dy/2, "True", alpha=0.4)
             plt.plot([x-dx, x], [y-dy, y], '-k')
-            drawLines(tree.left, x-dx, y-dy, dx, dy)
+            if limitation is None:
+	            drawLines(tree.left, x-dx, y-dy, dx, dy, limitation)
+            else:
+	            drawLines(tree.left, x-dx, y-dy, dx, dy, limitation-1)
         if(tree.right):
             ind = True
             text(x+dx/2, y-dy/2, "False", alpha=0.4)
             plt.plot([x, x+dx], [y, y-dy],'-k')
-            drawLines(tree.right, x+dx, y-dy, dx, dy)
+            if limitation is None:
+	            drawLines(tree.right, x+dx, y-dy, dx, dy, limitation)
+            else:
+	            drawLines(tree.right, x+dx, y-dy, dx, dy, limitation-1)
         if(ind):
             text(x, y, tree.data, 20) # condition
         else:
@@ -100,22 +105,22 @@ def drawTree(tree, leaves, limitation=None):
         drawLines(tree, x, y, dx, dy, limitation)	
     plt.show()
 
-#def fillTheLeaves(tree, cond):
-#    ind = False
-#    if(tree.left):
-#        ind = True
-#        if(cond != ""):
-#	        fillTheLeaves(tree.left, cond + " && " + tree.data)
-#        else:
-#	        fillTheLeaves(tree.left, tree.data)
-#    if(tree.right):
-#        ind = True
-#        if(cond != ""):
-#	        fillTheLeaves(tree.right, cond + " && !(" + tree.data + ")")
-#        else:
-#	        fillTheLeaves(tree.right, "!(" + tree.data + ")")
-#    if(ind == False):
-#        tree.data = cond
+def fillTheLeaves(tree, cond):
+    ind = False
+    if(tree.left):
+        ind = True
+        if(cond != ""):
+	        fillTheLeaves(tree.left, cond + " && " + tree.data)
+        else:
+	        fillTheLeaves(tree.left, tree.data)
+    if(tree.right):
+        ind = True
+        if(cond != ""):
+	        fillTheLeaves(tree.right, cond + " && !(" + tree.data + ")")
+        else:
+	        fillTheLeaves(tree.right, "!(" + tree.data + ")")
+    if(ind == False):
+        tree.data = cond
 
 
 # some useful data related to tree, and preorder tree traversal:

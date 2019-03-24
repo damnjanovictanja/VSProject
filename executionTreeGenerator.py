@@ -13,7 +13,6 @@ def lineNumbersOfSourceCode(mapLines):
     if(currLine == ""):
       break
     currLine = currLine.split(' ')
-    print(currLine)
     # fork = currLine[2] - toliko puta treba da se ponovi uslov u stablu...
     if(len(currLine) == 16 and currLine[2] != '0'):
       for j in range (0, int(currLine[3])):
@@ -51,13 +50,9 @@ treeBranches = tk.getTree(treeDataItems)
 #print("uslovi:\n",preorder)
 mapLines = {}
 lines = lineNumbersOfSourceCode(mapLines)
-print("linije:\n",lines)
-print("mapa:\n", mapLines)
 #for i in range (0, len(preorder)):
 # moramo nekako obraditi kada postoji vise nezavisnih uslova... - tu su sve linije odgovarajuci broj puta, ali ne u odgovarajucem redosledu
 #  mapPreorder[preorder[i]] = lines[i]
-
-
 
 ####################################################################
 ## Ovdje popunjavamo stablo informacijama o rednom broju linije gdje se nalazi uslov, mislim da je sada dobar redosled...
@@ -66,9 +61,11 @@ mapPreorder = tk.joinTreeAndLineNumbers(treeBranches, lines, mapLines) # mapa je
 
 #cond = ""
 #tk.fillTheLeaves(treeBranches, cond)
-tk.drawTree(treeBranches, len(treeDataItems))
-#if (len(sys.argv) != 2):
-#  tk.drawTree(treeBranches, len(treeDataItems))
-#else:
-#  tk.drawTree(treeBranches, len(treeDataItems), sys.argv[1])
+
+if (len(sys.argv) == 3):
+  print ("Drawing tree with limit: " + sys.argv[2])
+  tk.drawTree(treeBranches, len(treeDataItems), int(sys.argv[2]))
+else:
+  tk.drawTree(treeBranches, len(treeDataItems))
+
 

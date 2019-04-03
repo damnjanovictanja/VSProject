@@ -92,9 +92,9 @@ def main():
 
     if len(sys.argv) == 3:
         print("Drawing tree with limit: " + sys.argv[2])
-        tk.draw_tree(tree_branches, len(tree_data_items), int(sys.argv[2]))
+        tk.draw_tree(sys.argv[1], tree_branches, len(tree_data_items), int(sys.argv[2]))
     else:
-        tk.draw_tree(tree_branches, len(tree_data_items))
+        tk.draw_tree(sys.argv[1], tree_branches, len(tree_data_items))
 
 
 if __name__ == '__main__':

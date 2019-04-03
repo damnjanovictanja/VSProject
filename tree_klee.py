@@ -78,7 +78,7 @@ def get_tree(tree_list):
 # funkcija dobija strukturu stabla i iscrtava ga
 
 
-def draw_tree(execution_tree, leaves, limit=None):
+def draw_tree(file_name, execution_tree, leaves, limit=None):
     '''
     Draw tree from structure
     :param execution_tree:
@@ -145,6 +145,7 @@ def draw_tree(execution_tree, leaves, limit=None):
         draw_lines(execution_tree, x_coord, y_coord, d_x, d_y)
     else:
         draw_lines(execution_tree, x_coord, y_coord, d_x, d_y, limit)
+    plt.savefig(file_name[:-2] + ".pdf", format='pdf', dpi=80)
     plt.show()
 
 

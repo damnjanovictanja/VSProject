@@ -145,6 +145,7 @@ def draw_tree(file_name, execution_tree, leaves, limit=None):
         draw_lines(execution_tree, x_coord, y_coord, d_x, d_y)
     else:
         draw_lines(execution_tree, x_coord, y_coord, d_x, d_y, limit)
+    plt.axis('off')
     plt.savefig(file_name[:-2] + ".pdf", format='pdf', dpi=80)
     plt.show()
 

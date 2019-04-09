@@ -146,7 +146,10 @@ def draw_tree(file_name, execution_tree, leaves, limit=None):
     else:
         draw_lines(execution_tree, x_coord, y_coord, d_x, d_y, limit)
     plt.axis('off')
-    plt.savefig(file_name[:-2] + ".pdf", format='pdf', dpi=80)
+    manager = plt.get_current_fig_manager()    
+    manager.resize(*manager.window.maxsize())
+    
+    plt.savefig(file_name[:-2] + ".tif", bbox_inches='tight', format='tif', dpi=100)
     plt.show()
 
 

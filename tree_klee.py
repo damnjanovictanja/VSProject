@@ -149,7 +149,7 @@ def draw_tree(file_name, execution_tree, leaves, limit=None):
     manager = plt.get_current_fig_manager()    
     manager.resize(*manager.window.maxsize())
     
-    plt.savefig(file_name[:-2] + ".tif", bbox_inches='tight', format='tif', dpi=100)
+    plt.savefig(file_name[:-2] + ".png", bbox_inches='tight', format='png', dpi=100)
     plt.show()
 
 

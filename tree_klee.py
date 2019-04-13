@@ -86,7 +86,7 @@ def draw_tree(file_name, execution_tree, leaves, limit=None):
     :param limit:
     :return:
     '''
-    def text(x_coordinate, y_coordinate, t_arg, size=12, **kwargs):
+    def text(x_coordinate, y_coordinate, t_arg, size=6, **kwargs):
         '''
         Fill tree nodes with text
         :param x_coordinate:
@@ -133,9 +133,9 @@ def draw_tree(file_name, execution_tree, leaves, limit=None):
             else:
                 draw_lines(tree.right, x_coordinate+d_x, y_coordinate-d_y, d_x, d_y, limitation-1)
         if ind:
-            text(x_coordinate, y_coordinate, tree.data, 20)  # condition
+            text(x_coordinate, y_coordinate, tree.data, 12)  # condition
         else:
-            text(x_coordinate, y_coordinate, tree.data, 15)  # "leave"
+            text(x_coordinate, y_coordinate, tree.data, 6)  # "leave"
 
     x_coord = 0.5
     y_coord = 1
@@ -149,8 +149,8 @@ def draw_tree(file_name, execution_tree, leaves, limit=None):
     manager = plt.get_current_fig_manager()    
     manager.resize(*manager.window.maxsize())
     
-    plt.savefig(file_name[:-2] + ".png", bbox_inches='tight', format='png', dpi=100)
-    plt.show()
+    plt.savefig("./results/"+file_name[:-2] + ".png", bbox_inches='tight', format='png', dpi=150)
+    #plt.show()
 
 
 def fill_the_leaves(tree, cond):

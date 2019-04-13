@@ -13,3 +13,6 @@ fi
 if [ "$#" -eq 2 ]; then
 python execution_tree_generator.py $1.c $2
 fi
+cd results
+eog $1.png
+cd ..

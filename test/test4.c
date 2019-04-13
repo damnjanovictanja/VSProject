@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <klee/klee.h>
 
-int main(int argc, char **argv)
-{
-  char s[]="PozdravStudenti!";
+int main(int argc, char **argv) {
+  char s[] = "PozdravStudenti!";
   int p1, p2, p3;
   char *p;
 
@@ -31,4 +30,3 @@ int main(int argc, char **argv)
 
   return *p;
 }
-
